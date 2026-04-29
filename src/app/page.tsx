@@ -5,6 +5,7 @@ import LawsTab from "@/components/LawsTab";
 import EylfTab from "@/components/EylfTab";
 import ObsTab from "@/components/ObsTab";
 import PayTab from "@/components/PayTab";
+import VisaTab from "@/components/VisaTab";
 import SourcesTab from "@/components/SourcesTab";
 
 const tabs = [
@@ -13,6 +14,7 @@ const tabs = [
   { id: "eylf", label: "🌱 EYLF / MTOP" },
   { id: "obs", label: "📝 관찰 & 포트폴리오" },
   { id: "pay", label: "💰 시급 & 직급" },
+  { id: "visa", label: "✈ 스킬 비자" },
   { id: "sources", label: "🔗 출처" },
 ];
 
@@ -30,16 +32,19 @@ export default function Home() {
                 호주 차일드케어 레퍼런스
               </h1>
               <p className="text-xs text-gray-500">
-                NQF · EYLF V2.0 · NSW 법규 · 시급표 · 포트폴리오 가이드
+                NQF · EYLF V2.0 · NSW 법규 · 2026 신규 시급표 · 스킬 비자
               </p>
             </div>
-            <div className="ml-auto">
-              <span className="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded-full font-medium">
+            <div className="ml-auto flex flex-col items-end gap-1">
+              <span className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">
                 최신: 2026년 4월
+              </span>
+              <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                시급 2026.3 업데이트
               </span>
             </div>
           </div>
-          <nav className="flex gap-2 overflow-x-auto pb-1">
+          <nav className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -51,6 +56,12 @@ export default function Home() {
                 }`}
               >
                 {tab.label}
+                {tab.id === "pay" && (
+                  <span className="ml-1 bg-emerald-100 text-emerald-700 text-xs px-1 rounded">NEW</span>
+                )}
+                {tab.id === "visa" && (
+                  <span className="ml-1 bg-purple-100 text-purple-700 text-xs px-1 rounded">NEW</span>
+                )}
               </button>
             ))}
           </nav>
@@ -63,6 +74,7 @@ export default function Home() {
         {active === "eylf" && <EylfTab />}
         {active === "obs" && <ObsTab />}
         {active === "pay" && <PayTab />}
+        {active === "visa" && <VisaTab />}
         {active === "sources" && <SourcesTab />}
       </div>
     </main>
